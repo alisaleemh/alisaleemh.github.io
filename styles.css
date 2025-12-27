@@ -132,7 +132,7 @@ main > section:last-child {
 h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    text-align: center;
+    text-align: left;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
@@ -140,33 +140,31 @@ h2 {
 /* Experience Timeline */
 .timeline {
     position: relative;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-left: 2.5rem;
 }
 
 .timeline::after {
     content: '';
     position: absolute;
-    width: 2px;
-    background-color: var(--secondary-color);
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
     top: 0;
     bottom: 0;
-    left: 50%;
-    margin-left: -1px;
+    left: 14px;
 }
 
 .timeline-item {
-    padding: 1rem 3rem;
+    padding-left: 2.5rem;
     position: relative;
-    width: 50%;
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(160px, 200px) minmax(0, 1fr);
+    gap: 2.5rem;
 }
 
 .timeline-dot {
@@ -176,58 +174,47 @@ h2 {
     height: 16px;
     background-color: var(--accent-color);
     border-radius: 50%;
-    top: 24px;
+    top: 28px;
     z-index: 1;
-}
-
-.timeline-item:nth-child(odd) .timeline-dot {
-    right: -8px;
-}
-
-.timeline-item:nth-child(even) .timeline-dot {
-    left: -8px;
+    left: 6px;
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.15);
 }
 
 .timeline-date {
-    position: absolute;
-    top: 22px;
-    font-size: 0.9rem;
+    position: relative;
+    top: 0;
+    font-size: 0.95rem;
     color: var(--subtle-text-color);
     font-family: 'JetBrains Mono', monospace;
-}
-
-.timeline-item:nth-child(odd) .timeline-date {
-    left: 100%;
-    margin-left: 3rem;
-    text-align: left;
-}
-
-.timeline-item:nth-child(even) .timeline-date {
-    right: 100%;
-    margin-right: 3rem;
-    text-align: right;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
 }
 
 .timeline-content {
-    padding: 1.5rem;
-    background-color: var(--secondary-color);
-    border-radius: 8px;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(30, 30, 30, 0.95));
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .timeline-content h3 {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
 }
 
 .timeline-content p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--subtle-text-color);
+    margin-top: 0;
+    margin-bottom: 1.2rem;
 }
 
 .timeline-content ul {
     padding-left: 1.2rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 /* Skills Grid */
@@ -322,12 +309,10 @@ footer {
 
     .timeline-item {
         width: 100%;
-        padding-left: 50px;
-        padding-right: 1rem;
-    }
-
-    .timeline-item:nth-child(even) {
-        left: 0%;
+        padding-left: 2.75rem;
+        padding-right: 0;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .timeline-dot {
@@ -335,10 +320,6 @@ footer {
     }
 
     .timeline-date {
-        position: relative;
-        top: auto;
-        left: auto;
-        text-align: left !important;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
     }
 }
