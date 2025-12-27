@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ali's Resume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link to CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-1BWVU9dP6k6uVx57E2P6E5cJYhKk+2FAnr2YVykZBE6nR5EfFowMy6UK7Z1x+/3E" crossorigin="anonymous">
+    <!-- JetBrains Mono Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Enhanced Header Section -->
+        <header class="header-section">
+            <!-- Profile Picture -->
+            <div class="profile-picture">
+                <img src="profile.jpg" alt="Ali Hussain">
+            </div>
+            <!-- Header Details -->
+            <div class="header-details">
+                <h1>Ali Hussain</h1>
+                <p>Toronto, ON | <a href="mailto:ali.s1995@gmail.com">ali.s1995@gmail.com</a> | (647) 987 7996</p>
+                <!-- Introduction -->
+                <p class="intro-text">
+                    I am a passionate and experienced Senior Software Engineer specializing in cloud platforms, microservices, and backend development. With a strong focus on delivering high-quality solutions, I excel in designing scalable systems and mentoring teams to achieve success.
+                </p>
+                <!-- Dark Mode Toggle -->
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Search Input -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search experiences..." />
+            </div>
+
+            <!-- Experience Section -->
+            <section id="experience">
+                <h2>Experience</h2>
+
+                <!-- Job Entry Example -->
+                <div class="job fade-in">
+                    <h3 class="job-title">
+                        Senior Software Engineer, Attribution <span>(Nov 2022 – Present)</span>
+                        <button class="expand-btn">
+                            <span class="arrow down"></span>
+                        </button>
+                    </h3>
+                    <h4>Censys, Toronto ON</h4>
+                    <div class="job-details">
+                        <ul>
+                            <li class="achievement">Led the development of a real-time Change Data Capture (CDC) streaming service in Go and GCP PubSub, enabling instantaneous detection of attack surface changes.</li>
+                            <li>Led development of a new automated asset discovery service, allowing customers to automate their asset discovery.</li>
+                            <li>Undertook software engineering technical and behavioral interviews and mentored new hires to set them up for success.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Repeat Job Entries for other positions -->
+                <div class="job fade-in">
+                    <h3 class="job-title">
+                        Software Engineer, Platform <span>(Oct 2021 – Sep 2022)</span>
+                        <button class="expand-btn">
+                            <span class="arrow down"></span>
+                        </button>
+                    </h3>
+                    <h4>Nylas, Toronto ON</h4>
+                    <div class="job-details">
+                        <ul>
+                            <li>Led the development of error propagation flows in a Go backend orchestrator, reducing support tickets by 50%.</li>
+                            <li>Designed and wrote a Go marketplace handler integrating with the Nylas backend for instant market entry via cloud marketplaces.</li>
+                            <li>Developed a tool to provision microservices dynamically on AWS and GCP Kubernetes clusters with complete logging and monitoring.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- New Job Entry: Software Engineer II, IBM Cloud -->
+                <div class="job fade-in">
+                    <h3 class="job-title">
+                        Software Engineer II, IBM Cloud <span>(April 2020 – Oct 2021)</span>
+                        <button class="expand-btn">
+                            <span class="arrow down"></span>
+                        </button>
+                    </h3>
+                    <h4>IBM Canada, Markham ON</h4>
+                    <div class="job-details">
+                        <ul>
+                            <li>Led the design and development of a Node.js-based ChatOps bot platform used by hundreds of internal IBM Cloud service teams.</li>
+                            <li>Wrote a Go service layer to handle breakglass scenarios, resulting in increased resilience and 99.99% uptime.</li>
+                            <li>As the security and architecture focal, conducted design reviews and provided guidance to the wider team on security best practices.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- New Job Entry: Software Engineer II, DevOps for Enterprise -->
+                <div class="job fade-in">
+                    <h3 class="job-title">
+                        Software Engineer II, DevOps for Enterprise <span>(May 2018 – Apr 2020)</span>
+                        <button class="expand-btn">
+                            <span class="arrow down"></span>
+                        </button>
+                    </h3>
+                    <h4>IBM Canada, Markham ON</h4>
+                    <div class="job-details">
+                        <ul>
+                            <li>Wrote a caching layer in a Java Spring backend, resulting in improved backend performance by 50%.</li>
+                            <li>Led migration efforts to move legacy code to a modern microservice architecture (Java Spring-based), reducing latency by 80%.</li>
+                            <li>Defined and executed application performance testing, highlighting bottlenecks which led to performance improvements of up to 20%.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- New Job Entry: Software Engineer, Db2 Performance -->
+                <div class="job fade-in">
+                    <h3 class="job-title">
+                        Software Engineer, Db2 Performance <span>(May 2016 – Apr 2018)</span>
+                        <button class="expand-btn">
+                            <span class="arrow down"></span>
+                        </button>
+                    </h3>
+                    <h4>IBM Canada, Markham ON</h4>
+                    <div class="job-details">
+                        <ul>
+                            <li>Led the development of a new Angular 4 dashboard and Go backend, resulting in 10× faster load times and a more maintainable and extensible codebase.</li>
+                            <li>Wrote over 100 test cases in Perl for key PQA database modules, automated through a Jenkins CI pipeline, ensuring over 95% code coverage.</li>
+                            <li>Ported the C++ Db2 TPC-E benchmark to MySQL, leading to performance comparisons with AWS Aurora.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skill fade-in">
+                    <h3>Go</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="90%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in">
+                    <h3>Java</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="85%"></div>
+                    </div>
+                </div>
+                <div class="skill fade-in">
+                    <h3>JavaScript</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percentage="80%"></div>
+                    </div>
+                </div>
+                <!-- Add more skills as needed -->
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <form id="contact-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required />
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required />
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" required></textarea>
+
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Ali Hussain</p>
+        </footer>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Real-time CDC Streaming Service</h2>
+                <p>Here you can provide an in-depth explanation of the project, challenges faced, technologies used, and the impact it had on the organization.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For skills chart (if needed) -->
+    <script src="script.js"></script>
+
+</body>
+</html>
