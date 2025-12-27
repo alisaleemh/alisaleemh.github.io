@@ -6,6 +6,7 @@
     <title>Ali Hussain - Senior Software Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -16,9 +17,8 @@
             <nav>
                 <div class="logo">AH</div>
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -42,9 +42,65 @@
         </header>
 
         <main>
-            <section id="about">
-                <h2>About Me</h2>
-                <p>I am a passionate and experienced Senior Software Engineer specializing in cloud platforms, microservices, and backend development. With a strong focus on delivering high-quality solutions, I excel in designing scalable systems and mentoring teams to achieve success. My journey in tech has been driven by a curiosity for solving complex problems and a commitment to continuous learning.</p>
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-groups">
+                    <article class="skills-group">
+                        <h3>Backend</h3>
+                        <div class="skills-icons">
+                            <div class="skill-icon">
+                                <i class="devicon-go-plain"></i>
+                                <span>Go</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-java-plain"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-javascript-plain"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-python-plain"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-postgresql-plain"></i>
+                                <span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="skills-group">
+                        <h3>Cloud</h3>
+                        <div class="skills-icons">
+                            <div class="skill-icon">
+                                <i class="devicon-googlecloud-plain"></i>
+                                <span>GCP</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-amazonwebservices-plain-wordmark"></i>
+                                <span>AWS</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="skills-group">
+                        <h3>Infrastructure</h3>
+                        <div class="skills-icons">
+                            <div class="skill-icon">
+                                <i class="devicon-kubernetes-plain"></i>
+                                <span>Kubernetes</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-docker-plain"></i>
+                                <span>Docker</span>
+                            </div>
+                            <div class="skill-icon">
+                                <i class="devicon-redis-plain"></i>
+                                <span>Redis</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </section>
 
             <section id="experience">
@@ -57,9 +113,9 @@
                             <h3>Senior Software Engineer, Attribution</h3>
                             <p>Censys, Toronto ON</p>
                             <ul>
-                                <li>Led the development of a real-time Change Data Capture (CDC) streaming service in Go and GCP PubSub, enabling instantaneous detection of attack surface changes.</li>
-                                <li>Led development of a new automated asset discovery service, allowing customers to automate their asset discovery.</li>
-                                <li>Undertook software engineering technical and behavioral interviews and mentored new hires to set them up for success.</li>
+                                <li>Built a real-time Change Data Capture (CDC) streaming service in Go and GCP PubSub, enabling instant detection of attack surface changes.</li>
+                                <li>Delivered an automated asset discovery service that lets customers self-serve asset inventory.</li>
+                                <li>Led technical and behavioral interviews and mentored new hires for rapid onboarding.</li>
                             </ul>
                         </div>
                     </div>
@@ -70,9 +126,9 @@
                             <h3>Software Engineer, Platform</h3>
                             <p>Nylas, Toronto ON</p>
                             <ul>
-                                <li>Led the development of error propagation flows in a Go backend orchestrator, reducing support tickets by 50%.</li>
-                                <li>Designed and wrote a Go marketplace handler integrating with the Nylas backend for instant market entry via cloud marketplaces.</li>
-                                <li>Developed a tool to provision microservices dynamically on AWS and GCP Kubernetes clusters with complete logging and monitoring.</li>
+                                <li>Reduced support tickets by 50% by improving error propagation in a Go backend orchestrator.</li>
+                                <li>Shipped a Go marketplace handler integrating with the Nylas backend for cloud marketplace entry.</li>
+                                <li>Automated microservice provisioning on AWS and GCP Kubernetes with logging and monitoring.</li>
                             </ul>
                         </div>
                     </div>
@@ -83,29 +139,15 @@
                             <h3>Software Engineer II, IBM Cloud</h3>
                             <p>IBM Canada, Markham ON</p>
                             <ul>
-                                <li>Led the design and development of a Node.js-based ChatOps bot platform used by hundreds of internal IBM Cloud service teams.</li>
-                                <li>Wrote a Go service layer to handle breakglass scenarios, resulting in increased resilience and 99.99% uptime.</li>
-                                <li>As the security and architecture focal, conducted design reviews and provided guidance to the wider team on security best practices.</li>
+                                <li>Built a Node.js ChatOps platform used by hundreds of IBM Cloud service teams.</li>
+                                <li>Delivered a Go service layer for breakglass scenarios, raising resilience to 99.99% uptime.</li>
+                                <li>Drove security architecture reviews and team guidance on best practices.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">Go</div>
-                    <div class="skill-card">Java</div>
-                    <div class="skill-card">JavaScript</div>
-                    <div class="skill-card">Python</div>
-                    <div class="skill-card">GCP</div>
-                    <div class="skill-card">AWS</div>
-                    <div class="skill-card">Kubernetes</div>
-                    <div class="skill-card">Docker</div>
-                    <div class="skill-card">SQL</div>
-                    <div class="skill-card">Microservices</div>
-                </div>
             </section>
 
             <section id="contact">
