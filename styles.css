@@ -4,6 +4,7 @@
     --accent-color: #007bff;
     --text-color: #f0f0f0;
     --subtle-text-color: #a0a0a0;
+    --card-border-color: rgba(255, 255, 255, 0.08);
 }
 
 body, html {
@@ -16,7 +17,7 @@ body, html {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -74,7 +75,7 @@ nav a:hover {
 }
 
 .header-text h1 {
-    font-size: 4rem;
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
     margin-bottom: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
@@ -130,9 +131,9 @@ main > section:last-child {
 }
 
 h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 2.5rem;
+    text-align: left;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
@@ -140,94 +141,101 @@ h2 {
 /* Experience Timeline */
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
 
 .timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background-color: var(--secondary-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -1px;
+    content: none;
 }
 
 .timeline-item {
-    padding: 1rem 3rem;
+    display: grid;
+    grid-template-columns: minmax(140px, 200px) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
     position: relative;
-    width: 50%;
+    width: 100%;
 }
 
 .timeline-item:nth-child(odd) {
-    left: 0;
+    left: auto;
 }
 
 .timeline-item:nth-child(even) {
-    left: 50%;
+    left: auto;
 }
 
 .timeline-dot {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    top: 24px;
-    z-index: 1;
+    display: none;
 }
 
 .timeline-item:nth-child(odd) .timeline-dot {
-    right: -8px;
+    right: auto;
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-    left: -8px;
+    left: auto;
 }
 
 .timeline-date {
-    position: absolute;
-    top: 22px;
-    font-size: 0.9rem;
+    position: relative;
+    top: 0;
+    font-size: 0.85rem;
     color: var(--subtle-text-color);
     font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .timeline-item:nth-child(odd) .timeline-date {
-    left: 100%;
-    margin-left: 3rem;
     text-align: left;
 }
 
 .timeline-item:nth-child(even) .timeline-date {
-    right: 100%;
-    margin-right: 3rem;
     text-align: right;
 }
 
+.timeline-date::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    flex-shrink: 0;
+}
+
 .timeline-content {
-    padding: 1.5rem;
-    background-color: var(--secondary-color);
-    border-radius: 8px;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(42, 42, 42, 0.95), rgba(28, 28, 28, 0.95));
+    border-radius: 18px;
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .timeline-content h3 {
     margin-top: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.35rem;
 }
 
 .timeline-content p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--subtle-text-color);
+    margin-top: 0;
 }
 
 .timeline-content ul {
     padding-left: 1.2rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1.25rem 0 0;
 }
 
 /* Skills Grid */
@@ -316,29 +324,22 @@ footer {
         display: none; /* Simple responsive nav for now */
     }
 
-    .timeline::after {
-        left: 20px;
-    }
-
     .timeline-item {
-        width: 100%;
-        padding-left: 50px;
-        padding-right: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .timeline-item:nth-child(even) {
-        left: 0%;
+        left: 0;
     }
+}
 
-    .timeline-dot {
-        left: 12px;
+@media (max-width: 600px) {
+    h2 {
+        text-align: center;
     }
 
     .timeline-date {
-        position: relative;
-        top: auto;
-        left: auto;
-        text-align: left !important;
-        margin-bottom: 0.5rem;
+        text-align: left;
     }
 }
