@@ -77,14 +77,14 @@ nav a:hover {
 }
 
 .header-text h1 {
-    font-size: 4.5rem;
+    font-size: 4.9rem;
     margin-bottom: 0.75rem;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: var(--accent-color);
     margin-bottom: 1.25rem;
     font-family: 'JetBrains Mono', monospace;
@@ -135,7 +135,7 @@ main > section:last-child {
 }
 
 h2 {
-    font-size: 2.4rem;
+    font-size: 2.7rem;
     margin-bottom: 2rem;
     text-align: left;
     font-family: 'Inter', sans-serif;
@@ -206,12 +206,12 @@ h2 {
 
 .timeline-content h3 {
     margin-top: 0;
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     margin-bottom: 0.5rem;
 }
 
 .timeline-content p {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     color: var(--subtle-text-color);
     margin-top: 0;
     margin-bottom: 0.9rem;
@@ -219,8 +219,8 @@ h2 {
 
 .timeline-content ul {
     padding-left: 1.2rem;
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.65;
     margin: 0;
 }
 
@@ -248,7 +248,7 @@ h2 {
 
 .skills-group h3 {
     margin: 0 0 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--subtle-text-color);
@@ -265,17 +265,17 @@ h2 {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-color);
 }
 
 .skill-icon i {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #d4d7dd;
 }
 
 .skill-icon span {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--subtle-text-color);
 }
 
@@ -330,7 +330,7 @@ footer {
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .header-content {
@@ -353,11 +353,11 @@ footer {
     }
 
     .header-text h1 {
-        font-size: 3.2rem;
+        font-size: 3.6rem;
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .timeline::after {
@@ -387,9 +387,4 @@ footer {
     .skill-icon {
         align-items: center;
     }
-}
-#about p {
-    max-width: 720px;
-    color: var(--subtle-text-color);
-    line-height: 1.7;
 }
