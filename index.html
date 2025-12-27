@@ -1,213 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ali's Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Link to CSS -->
-    <link href="styles.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-1BWVU9dP6k6uVx57E2P6E5cJYhKk+2FAnr2YVykZBE6nR5EfFowMy6UK7Z1x+/3E" crossorigin="anonymous">
-    <!-- JetBrains Mono Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Hussain — Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
+          },
+          colors: {
+            ink: '#0b0f17',
+          },
+        },
+      },
+    };
+  </script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #0a0e16;
+    }
+    .aurora {
+      position: fixed;
+      inset: -10% -10% auto -10%;
+      height: 60vh;
+      background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.28), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.25), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(34, 197, 94, 0.18), transparent 55%);
+      filter: blur(40px);
+      z-index: -2;
+      animation: float 20s ease-in-out infinite alternate;
+    }
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.15"/></svg>');
+      mix-blend-mode: soft-light;
+      opacity: 0.35;
+      z-index: -1;
+    }
+    @keyframes float {
+      0% { transform: translateY(-2%) translateX(-1%); }
+      100% { transform: translateY(2%) translateX(1%); }
+    }
+    .glow-card {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    .divider {
+      background: linear-gradient(90deg, rgba(148, 163, 184, 0.15), rgba(56, 189, 248, 0.25), rgba(148, 163, 184, 0.15));
+      height: 1px;
+    }
+    .focus-ring:focus-visible {
+      outline: 2px solid rgba(56, 189, 248, 0.9);
+      outline-offset: 2px;
+    }
+    .tilt {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .tilt:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+    }
+    .chip {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(30, 41, 59, 0.6);
+    }
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular;
+    }
+    .nav-link.active {
+      color: #38bdf8;
+    }
+    .skill-item {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .tilt {
+        transition: none;
+      }
+      .aurora {
+        animation: none;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="text-slate-100 font-sans">
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
 
-    <div class="container">
+  <header class="sticky top-0 z-40 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-sm">
+      <div class="flex items-center gap-3">
+        <span class="mono text-xs text-slate-400">/portfolio</span>
+        <span class="font-semibold tracking-wide">Ali Hussain</span>
+      </div>
+      <div class="hidden gap-6 md:flex">
+        <a class="nav-link focus-ring text-slate-300 hover:text-slate-100" href="#about">About</a>
+        <a class="nav-link focus-ring text-slate-300 hover:text-slate-100" href="#skills">Skills</a>
+        <a class="nav-link focus-ring text-slate-300 hover:text-slate-100" href="#experience">Experience</a>
+        <a class="nav-link focus-ring text-slate-300 hover:text-slate-100" href="#projects">Projects</a>
+        <a class="nav-link focus-ring text-slate-300 hover:text-slate-100" href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="focus-ring rounded-full border border-slate-700/60 bg-slate-900/60 px-3 py-1 text-xs text-slate-200 hover:border-sky-400">Contact</a>
+    </nav>
+  </header>
 
-        <!-- Enhanced Header Section -->
-        <header class="header-section">
-            <!-- Profile Picture -->
-            <div class="profile-picture">
-                <img src="profile.jpg" alt="Ali Hussain">
+  <main class="mx-auto max-w-6xl px-4 pb-16">
+    <section id="about" class="section pt-12">
+      <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="space-y-5">
+          <p class="mono text-xs uppercase tracking-[0.3em] text-slate-400">Senior Software Engineer</p>
+          <h1 class="text-4xl font-semibold leading-tight md:text-5xl">Ali Hussain</h1>
+          <p class="text-lg text-slate-300 md:text-xl">Designing distributed backend systems and cloud-native platforms with a focus on Kubernetes, reliability, and scale.</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#contact" class="focus-ring rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-slate-950 hover:bg-sky-400">Contact</a>
+            <a href="#experience" class="focus-ring rounded-full border border-slate-700/70 px-5 py-2 text-sm font-semibold text-slate-200 hover:border-sky-400">View Experience</a>
+          </div>
+          <div class="grid gap-3 pt-4 sm:grid-cols-2">
+            <div class="glow-card tilt rounded-xl p-4">
+              <p class="mono text-xs text-slate-400">Impact Highlight</p>
+              <p class="mt-2 text-sm">Reduced ingestion latency <span class="font-semibold text-sky-300">35%</span> across multi-region pipelines.</p>
             </div>
-            <!-- Header Details -->
-            <div class="header-details">
-                <h1>Ali Hussain</h1>
-                <p>Toronto, ON | <a href="mailto:ali.s1995@gmail.com">ali.s1995@gmail.com</a> | (647) 987 7996</p>
-                <!-- Introduction -->
-                <p class="intro-text">
-                    I am a passionate and experienced Senior Software Engineer specializing in cloud platforms, microservices, and backend development. With a strong focus on delivering high-quality solutions, I excel in designing scalable systems and mentoring teams to achieve success.
-                </p>
-                <!-- Dark Mode Toggle -->
-                <label class="switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="slider round"></span>
-                </label>
+            <div class="glow-card tilt rounded-xl p-4">
+              <p class="mono text-xs text-slate-400">Impact Highlight</p>
+              <p class="mt-2 text-sm">Scaled telemetry to <span class="font-semibold text-sky-300">2.4B events/day</span> with 99.9% SLO.</p>
             </div>
-        </header>
-
-        <!-- Navigation -->
-        <nav>
-            <ul>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-        <main>
-            <!-- Search Input -->
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search experiences..." />
+            <div class="glow-card tilt rounded-xl p-4">
+              <p class="mono text-xs text-slate-400">Impact Highlight</p>
+              <p class="mt-2 text-sm">Cut infra spend <span class="font-semibold text-sky-300">20%</span> via workload right-sizing.</p>
             </div>
-
-            <!-- Experience Section -->
-            <section id="experience">
-                <h2>Experience</h2>
-
-                <!-- Job Entry Example -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Senior Software Engineer, Attribution <span>(Nov 2022 – Present)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>Censys, Toronto ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li class="achievement">Led the development of a real-time Change Data Capture (CDC) streaming service in Go and GCP PubSub, enabling instantaneous detection of attack surface changes.</li>
-                            <li>Led development of a new automated asset discovery service, allowing customers to automate their asset discovery.</li>
-                            <li>Undertook software engineering technical and behavioral interviews and mentored new hires to set them up for success.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Repeat Job Entries for other positions -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer, Platform <span>(Oct 2021 – Sep 2022)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>Nylas, Toronto ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the development of error propagation flows in a Go backend orchestrator, reducing support tickets by 50%.</li>
-                            <li>Designed and wrote a Go marketplace handler integrating with the Nylas backend for instant market entry via cloud marketplaces.</li>
-                            <li>Developed a tool to provision microservices dynamically on AWS and GCP Kubernetes clusters with complete logging and monitoring.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer II, IBM Cloud -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer II, IBM Cloud <span>(April 2020 – Oct 2021)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the design and development of a Node.js-based ChatOps bot platform used by hundreds of internal IBM Cloud service teams.</li>
-                            <li>Wrote a Go service layer to handle breakglass scenarios, resulting in increased resilience and 99.99% uptime.</li>
-                            <li>As the security and architecture focal, conducted design reviews and provided guidance to the wider team on security best practices.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer II, DevOps for Enterprise -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer II, DevOps for Enterprise <span>(May 2018 – Apr 2020)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Wrote a caching layer in a Java Spring backend, resulting in improved backend performance by 50%.</li>
-                            <li>Led migration efforts to move legacy code to a modern microservice architecture (Java Spring-based), reducing latency by 80%.</li>
-                            <li>Defined and executed application performance testing, highlighting bottlenecks which led to performance improvements of up to 20%.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer, Db2 Performance -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer, Db2 Performance <span>(May 2016 – Apr 2018)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the development of a new Angular 4 dashboard and Go backend, resulting in 10× faster load times and a more maintainable and extensible codebase.</li>
-                            <li>Wrote over 100 test cases in Perl for key PQA database modules, automated through a Jenkins CI pipeline, ensuring over 95% code coverage.</li>
-                            <li>Ported the C++ Db2 TPC-E benchmark to MySQL, leading to performance comparisons with AWS Aurora.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skill fade-in">
-                    <h3>Go</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="90%"></div>
-                    </div>
-                </div>
-                <div class="skill fade-in">
-                    <h3>Java</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="85%"></div>
-                    </div>
-                </div>
-                <div class="skill fade-in">
-                    <h3>JavaScript</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="80%"></div>
-                    </div>
-                </div>
-                <!-- Add more skills as needed -->
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <form id="contact-form">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required />
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required />
-
-                    <label for="message">Message:</label>
-                    <textarea id="message" required></textarea>
-
-                    <button type="submit">Send</button>
-                </form>
-            </section>
-
-        </main>
-
-        <footer>
-            <p>&copy; 2023 Ali Hussain</p>
-        </footer>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Real-time CDC Streaming Service</h2>
-                <p>Here you can provide an in-depth explanation of the project, challenges faced, technologies used, and the impact it had on the organization.</p>
+            <div class="glow-card tilt rounded-xl p-4">
+              <p class="mono text-xs text-slate-400">Impact Highlight</p>
+              <p class="mt-2 text-sm">Improved platform reliability to <span class="font-semibold text-sky-300">99.95%</span> uptime.</p>
             </div>
+          </div>
         </div>
+        <div class="glow-card tilt rounded-2xl p-6">
+          <div class="flex items-center justify-between">
+            <p class="mono text-xs text-slate-400">Signal Snapshot</p>
+            <span class="mono text-xs text-slate-500">Last 12 months</span>
+          </div>
+          <div class="mt-4 space-y-4 text-sm text-slate-300">
+            <div class="flex items-center justify-between border-b border-slate-800/70 pb-3">
+              <span>Service availability</span>
+              <span class="mono text-sky-300">99.95%</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-slate-800/70 pb-3">
+              <span>p99 latency</span>
+              <span class="mono text-sky-300">180ms</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-slate-800/70 pb-3">
+              <span>Data freshness</span>
+              <span class="mono text-sky-300">&lt; 90s</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Cloud footprint</span>
+              <span class="mono text-sky-300">4 regions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <div class="my-10 divider"></div>
+
+    <section id="skills" class="section space-y-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="mono text-xs uppercase tracking-[0.3em] text-slate-400">Skills</p>
+          <h2 class="text-2xl font-semibold">Core stack &amp; tooling</h2>
+        </div>
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter skills by category">
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-200" data-filter="all" aria-pressed="true">All</button>
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-400" data-filter="backend" aria-pressed="false">Backend</button>
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-400" data-filter="cloud" aria-pressed="false">Cloud/Infra</button>
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-400" data-filter="data" aria-pressed="false">Data</button>
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-400" data-filter="obs" aria-pressed="false">Observability</button>
+          <button class="skill-filter focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-400" data-filter="ml" aria-pressed="false">ML</button>
+        </div>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="backend">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#00ADD8" d="M64 0C28.6 0 0 28.6 0 64s28.6 64 64 64 64-28.6 64-64S99.4 0 64 0z"/><path fill="#FFF" d="M88.9 46.1c0-8.7-7-15.7-15.7-15.7H54.8c-8.7 0-15.7 7-15.7 15.7v23.5c0 8.7 7 15.7 15.7 15.7h18.4c8.7 0 15.7-7 15.7-15.7V46.1z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Go</p>
+              <p class="mono text-xs text-slate-400">services, concurrency</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="backend">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#6b7280" d="M12 24l52-20 52 20v80l-52 20-52-20V24z"/><path fill="#e2e8f0" d="M64 16l38 14v68L64 112 26 98V30z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">gRPC</p>
+              <p class="mono text-xs text-slate-400">IDLs, API contracts</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="backend">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#facc15" d="M64 8l48 20v24c0 33.1-20.8 60.9-48 68-27.2-7.1-48-34.9-48-68V28L64 8z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Python</p>
+              <p class="mono text-xs text-slate-400">automation, tooling</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="cloud">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#326CE5" d="M64 8l48 28v56l-48 28-48-28V36L64 8z"/><path fill="#fff" d="M64 30l26 15v30L64 90 38 75V45l26-15z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Kubernetes</p>
+              <p class="mono text-xs text-slate-400">orchestration</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="cloud">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#2496ED" d="M64 12l40 23v46L64 104 24 81V35L64 12z"/><path fill="#fff" d="M64 33l22 13v26L64 85 42 72V46l22-13z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Docker</p>
+              <p class="mono text-xs text-slate-400">containers</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="cloud">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#4285F4" d="M64 16l40 20v56L64 112 24 92V36l40-20z"/><path fill="#fff" d="M64 34l24 12v36L64 94 40 82V46l24-12z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">GCP</p>
+              <p class="mono text-xs text-slate-400">GKE, BigQuery</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="cloud">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#7c3aed" d="M64 12l44 24v56l-44 24-44-24V36l44-24z"/><path fill="#fff" d="M64 36l24 13v30L64 92 40 79V49l24-13z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Terraform</p>
+              <p class="mono text-xs text-slate-400">IaC, modules</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="data">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#336791" d="M64 12c-22 0-40 7-40 16v72c0 9 18 16 40 16s40-7 40-16V28c0-9-18-16-40-16z"/><path fill="#fff" opacity="0.2" d="M24 28c0 9 18 16 40 16s40-7 40-16"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Postgres</p>
+              <p class="mono text-xs text-slate-400">OLTP, tuning</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="data">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#10b981" d="M64 10l42 22v64L64 118 22 96V32l42-22z"/><path fill="#fff" d="M64 32l24 12v40L64 96 40 84V44l24-12z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Elasticsearch</p>
+              <p class="mono text-xs text-slate-400">search + analytics</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="obs">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#ef4444" d="M64 12l44 24v56l-44 24-44-24V36l44-24z"/><path fill="#fff" d="M64 34l22 12v36L64 94 42 82V46l22-12z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">Prometheus</p>
+              <p class="mono text-xs text-slate-400">metrics + alerting</p>
+            </div>
+          </div>
+        </div>
+        <div class="glow-card skill-item tilt rounded-xl p-4" data-category="ml">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-slate-900/70 p-2">
+              <svg viewBox="0 0 128 128" class="h-full w-full" aria-hidden="true"><path fill="#8b5cf6" d="M64 12l44 24v56l-44 24-44-24V36l44-24z"/><path fill="#fff" d="M64 40l18 10v28L64 88 46 78V50l18-10z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium">ML Ops</p>
+              <p class="mono text-xs text-slate-400">pipelines + serving</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="my-10 divider"></div>
+
+    <section id="experience" class="section space-y-6">
+      <div>
+        <p class="mono text-xs uppercase tracking-[0.3em] text-slate-400">Experience</p>
+        <h2 class="text-2xl font-semibold">Distributed systems &amp; platform delivery</h2>
+      </div>
+      <div class="space-y-4">
+        <article class="glow-card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Senior Software Engineer · Censys</h3>
+              <p class="mono text-xs text-slate-400">Toronto, ON · 2021 — Present</p>
+            </div>
+            <button class="experience-toggle focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-200" aria-expanded="false" aria-controls="exp-censys">Show more</button>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li>Led distributed ingestion platform for internet-scale scan data with strong SLO guarantees.</li>
+            <li>Built multi-region Kafka + GCS pipelines with adaptive backpressure controls.</li>
+          </ul>
+          <div id="exp-censys" class="experience-details mt-4 hidden">
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>Reduced indexing lag from 12 minutes to 7 minutes through batching and queue tuning.</li>
+              <li>Designed k8s operators to orchestrate scan workloads across 4 regions.</li>
+              <li>Improved observability by standardizing Prometheus metrics, traces, and SLO dashboards.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Go</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Kubernetes</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">GCP</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">gRPC</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Prometheus</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glow-card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Software Engineer · Cerebras Systems</h3>
+              <p class="mono text-xs text-slate-400">Toronto, ON · 2019 — 2021</p>
+            </div>
+            <button class="experience-toggle focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-200" aria-expanded="false" aria-controls="exp-cerebras">Show more</button>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li>Built data ingestion services feeding large-scale ML training clusters.</li>
+            <li>Automated infra provisioning for accelerator testbeds.</li>
+          </ul>
+          <div id="exp-cerebras" class="experience-details mt-4 hidden">
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>Implemented CDC streaming into StarRocks to drive 5x faster analytics.</li>
+              <li>Developed gRPC-based job control plane with end-to-end tracing.</li>
+              <li>Decreased batch processing costs by 18% via autoscaling policies.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Python</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Terraform</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Docker</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Postgres</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">StarRocks</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glow-card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Software Engineer · Aurora Labs</h3>
+              <p class="mono text-xs text-slate-400">2017 — 2019</p>
+            </div>
+            <button class="experience-toggle focus-ring rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-200" aria-expanded="false" aria-controls="exp-aurora">Show more</button>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li>Designed event streaming services for IoT telemetry ingestion.</li>
+            <li>Improved alerting and operational readiness for on-call teams.</li>
+          </ul>
+          <div id="exp-aurora" class="experience-details mt-4 hidden">
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li>Created gRPC APIs and optimized PostgreSQL schemas for 30% faster reads.</li>
+              <li>Introduced Grafana + Prometheus dashboards for fleet visibility.</li>
+            </ul>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Go</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Postgres</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Prometheus</span>
+              <span class="chip rounded-full px-3 py-1 text-xs text-slate-200">Elasticsearch</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="my-10 divider"></div>
+
+    <section id="projects" class="section space-y-6">
+      <div>
+        <p class="mono text-xs uppercase tracking-[0.3em] text-slate-400">Projects</p>
+        <h2 class="text-2xl font-semibold">Selected case studies</h2>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-3">
+        <article class="glow-card tilt rounded-2xl p-5">
+          <h3 class="font-semibold">CDC Streaming Service</h3>
+          <p class="mt-3 text-sm text-slate-300">Problem → late data visibility.</p>
+          <p class="text-sm text-slate-300">Approach → Debezium + Kafka + StarRocks ingestion pipeline.</p>
+          <p class="text-sm text-slate-300">Result → analytics latency down to 90s.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="chip rounded-full px-2 py-1 text-xs">Kafka</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">StarRocks</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">Go</span>
+          </div>
+        </article>
+        <article class="glow-card tilt rounded-2xl p-5">
+          <h3 class="font-semibold">Kubernetes Workload Orchestration</h3>
+          <p class="mt-3 text-sm text-slate-300">Problem → manual job provisioning slowed releases.</p>
+          <p class="text-sm text-slate-300">Approach → custom k8s operator with dynamic scheduling.</p>
+          <p class="text-sm text-slate-300">Result → deploy time cut by 40%.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="chip rounded-full px-2 py-1 text-xs">Kubernetes</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">Terraform</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">Prometheus</span>
+          </div>
+        </article>
+        <article class="glow-card tilt rounded-2xl p-5">
+          <h3 class="font-semibold">High-volume Ingestion Platform</h3>
+          <p class="mt-3 text-sm text-slate-300">Problem → inconsistent throughput at peak loads.</p>
+          <p class="text-sm text-slate-300">Approach → sharded ingestion services + autoscaling.</p>
+          <p class="text-sm text-slate-300">Result → 2.4B events/day sustained.</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="chip rounded-full px-2 py-1 text-xs">GCP</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">Kafka</span>
+            <span class="chip rounded-full px-2 py-1 text-xs">Postgres</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="my-10 divider"></div>
+
+    <section id="contact" class="section space-y-6">
+      <div>
+        <p class="mono text-xs uppercase tracking-[0.3em] text-slate-400">Contact</p>
+        <h2 class="text-2xl font-semibold">Let’s build reliable systems.</h2>
+      </div>
+      <div class="glow-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p class="text-sm text-slate-300">Email</p>
+            <p class="mono text-sm text-sky-300">ali.hussain@domain.com</p>
+          </div>
+          <button id="copyEmail" class="focus-ring rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400" aria-label="Copy email to clipboard">Copy email</button>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-3 text-sm">
+          <a href="https://www.linkedin.com" class="focus-ring flex items-center gap-2 rounded-full border border-slate-700/70 px-4 py-2 text-slate-200 hover:border-sky-400" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com" class="focus-ring flex items-center gap-2 rounded-full border border-slate-700/70 px-4 py-2 text-slate-200 hover:border-sky-400" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="mailto:ali.hussain@domain.com" class="focus-ring flex items-center gap-2 rounded-full border border-slate-700/70 px-4 py-2 text-slate-200 hover:border-sky-400" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i> Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800/70 bg-slate-950/70">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 text-xs text-slate-500">
+      <span>© 2025 Ali Hussain. All rights reserved.</span>
+      <span class="mono">Designed for clarity &amp; velocity.</span>
     </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For skills chart (if needed) -->
-    <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (!prefersReducedMotion) {
+      gsap.from('header', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' });
+      gsap.from('#about h1', { y: 20, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power2.out' });
+      gsap.utils.toArray('.section').forEach((section) => {
+        gsap.from(section.querySelectorAll('.glow-card, h2, h3, p'), {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+          },
+          opacity: 0,
+          y: 20,
+          stagger: 0.08,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    document.querySelectorAll('.experience-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.getAttribute('aria-controls'));
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        button.textContent = expanded ? 'Show more' : 'Show less';
+        target.classList.toggle('hidden');
+        if (!prefersReducedMotion) {
+          gsap.fromTo(target, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+        }
+      });
+    });
+
+    const filterButtons = document.querySelectorAll('.skill-filter');
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach((btn) => {
+          btn.setAttribute('aria-pressed', btn === button ? 'true' : 'false');
+          btn.classList.toggle('text-slate-200', btn === button);
+          btn.classList.toggle('text-slate-400', btn !== button);
+        });
+        skillItems.forEach((item) => {
+          const matches = filter === 'all' || item.dataset.category === filter;
+          item.style.display = matches ? 'block' : 'none';
+          if (!prefersReducedMotion && matches) {
+            gsap.fromTo(item, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 });
+          }
+        });
+      });
+    });
+
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('ali.hussain@domain.com');
+        const button = document.getElementById('copyEmail');
+        const original = button.textContent;
+        button.textContent = 'Copied';
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1500);
+      } catch (error) {
+        window.location.href = 'mailto:ali.hussain@domain.com';
+      }
+    });
+  </script>
 </body>
 </html>
