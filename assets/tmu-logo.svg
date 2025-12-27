@@ -1,0 +1,7 @@
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Toronto Metropolitan University</title>
+  <rect width="160" height="40" rx="6" fill="#0B2D5B"/>
+  <text x="12" y="25" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">
+    Toronto MU
+  </text>
+</svg>
