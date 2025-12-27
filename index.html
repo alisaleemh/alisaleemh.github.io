@@ -1,213 +1,657 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <title>Ali's Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Link to CSS -->
-    <link href="styles.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-1BWVU9dP6k6uVx57E2P6E5cJYhKk+2FAnr2YVykZBE6nR5EfFowMy6UK7Z1x+/3E" crossorigin="anonymous">
-    <!-- JetBrains Mono Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ali Hussain — Senior Software Engineer</title>
+  <meta name="description" content="Ali Hussain — Senior Software Engineer specializing in distributed systems, backend, cloud, and Kubernetes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            ink: {
+              900: '#0b0c0f',
+              800: '#111218',
+              700: '#171a22',
+              600: '#202330',
+              500: '#2c3040',
+              400: '#3a4052',
+              300: '#515b73',
+            },
+          },
+          boxShadow: {
+            soft: '0 12px 24px -16px rgba(0,0,0,0.6)',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-feature-settings: "ss01" 1, "ss02" 1, "ss03" 1;
+    }
+    ::selection {
+      background: rgba(125, 156, 255, 0.2);
+      color: #e4e8f7;
+    }
+    .section-divider {
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.25rem;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      height: 2px;
+      width: 100%;
+      background: rgba(129, 140, 248, 0.8);
+      border-radius: 999px;
+    }
+    .chip {
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(17, 19, 28, 0.6);
+    }
+    .chip:hover {
+      border-color: rgba(129, 140, 248, 0.6);
+      transform: translateY(-1px);
+    }
+    .focus-ring:focus-visible {
+      outline: 2px solid rgba(129, 140, 248, 0.9);
+      outline-offset: 2px;
+    }
+    .experience-card {
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(17, 18, 26, 0.7);
+    }
+    .accordion-toggle[aria-expanded="true"] .toggle-icon {
+      transform: rotate(180deg);
+    }
+    .skill-logo {
+      width: 20px;
+      height: 20px;
+      opacity: 0.75;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .chip,
+      .nav-link,
+      .accordion-toggle,
+      .experience-card {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="h-full bg-ink-900 text-slate-100">
+  <!-- Top Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur-sm bg-ink-900/80 border-b border-white/5">
+    <nav class="max-w-6xl mx-auto flex items-center justify-end gap-6 px-6 py-4 text-sm">
+      <a class="nav-link focus-ring text-slate-200 hover:text-white transition" href="#about">About</a>
+      <a class="nav-link focus-ring text-slate-200 hover:text-white transition" href="#skills">Skills</a>
+      <a class="nav-link focus-ring text-slate-200 hover:text-white transition" href="#experience">Experience</a>
+      <a class="nav-link focus-ring text-slate-200 hover:text-white transition" href="#education">Education</a>
+      <a class="nav-link focus-ring text-slate-200 hover:text-white transition" href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <div class="container">
-
-        <!-- Enhanced Header Section -->
-        <header class="header-section">
-            <!-- Profile Picture -->
-            <div class="profile-picture">
-                <img src="profile.jpg" alt="Ali Hussain">
-            </div>
-            <!-- Header Details -->
-            <div class="header-details">
-                <h1>Ali Hussain</h1>
-                <p>Toronto, ON | <a href="mailto:ali.s1995@gmail.com">ali.s1995@gmail.com</a> | (647) 987 7996</p>
-                <!-- Introduction -->
-                <p class="intro-text">
-                    I am a passionate and experienced Senior Software Engineer specializing in cloud platforms, microservices, and backend development. With a strong focus on delivering high-quality solutions, I excel in designing scalable systems and mentoring teams to achieve success.
-                </p>
-                <!-- Dark Mode Toggle -->
-                <label class="switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </header>
-
-        <!-- Navigation -->
-        <nav>
-            <ul>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-        <main>
-            <!-- Search Input -->
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search experiences..." />
-            </div>
-
-            <!-- Experience Section -->
-            <section id="experience">
-                <h2>Experience</h2>
-
-                <!-- Job Entry Example -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Senior Software Engineer, Attribution <span>(Nov 2022 – Present)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>Censys, Toronto ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li class="achievement">Led the development of a real-time Change Data Capture (CDC) streaming service in Go and GCP PubSub, enabling instantaneous detection of attack surface changes.</li>
-                            <li>Led development of a new automated asset discovery service, allowing customers to automate their asset discovery.</li>
-                            <li>Undertook software engineering technical and behavioral interviews and mentored new hires to set them up for success.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Repeat Job Entries for other positions -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer, Platform <span>(Oct 2021 – Sep 2022)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>Nylas, Toronto ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the development of error propagation flows in a Go backend orchestrator, reducing support tickets by 50%.</li>
-                            <li>Designed and wrote a Go marketplace handler integrating with the Nylas backend for instant market entry via cloud marketplaces.</li>
-                            <li>Developed a tool to provision microservices dynamically on AWS and GCP Kubernetes clusters with complete logging and monitoring.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer II, IBM Cloud -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer II, IBM Cloud <span>(April 2020 – Oct 2021)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the design and development of a Node.js-based ChatOps bot platform used by hundreds of internal IBM Cloud service teams.</li>
-                            <li>Wrote a Go service layer to handle breakglass scenarios, resulting in increased resilience and 99.99% uptime.</li>
-                            <li>As the security and architecture focal, conducted design reviews and provided guidance to the wider team on security best practices.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer II, DevOps for Enterprise -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer II, DevOps for Enterprise <span>(May 2018 – Apr 2020)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Wrote a caching layer in a Java Spring backend, resulting in improved backend performance by 50%.</li>
-                            <li>Led migration efforts to move legacy code to a modern microservice architecture (Java Spring-based), reducing latency by 80%.</li>
-                            <li>Defined and executed application performance testing, highlighting bottlenecks which led to performance improvements of up to 20%.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- New Job Entry: Software Engineer, Db2 Performance -->
-                <div class="job fade-in">
-                    <h3 class="job-title">
-                        Software Engineer, Db2 Performance <span>(May 2016 – Apr 2018)</span>
-                        <button class="expand-btn">
-                            <span class="arrow down"></span>
-                        </button>
-                    </h3>
-                    <h4>IBM Canada, Markham ON</h4>
-                    <div class="job-details">
-                        <ul>
-                            <li>Led the development of a new Angular 4 dashboard and Go backend, resulting in 10× faster load times and a more maintainable and extensible codebase.</li>
-                            <li>Wrote over 100 test cases in Perl for key PQA database modules, automated through a Jenkins CI pipeline, ensuring over 95% code coverage.</li>
-                            <li>Ported the C++ Db2 TPC-E benchmark to MySQL, leading to performance comparisons with AWS Aurora.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skill fade-in">
-                    <h3>Go</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="90%"></div>
-                    </div>
-                </div>
-                <div class="skill fade-in">
-                    <h3>Java</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="85%"></div>
-                    </div>
-                </div>
-                <div class="skill fade-in">
-                    <h3>JavaScript</h3>
-                    <div class="progress-bar">
-                        <div class="progress" data-percentage="80%"></div>
-                    </div>
-                </div>
-                <!-- Add more skills as needed -->
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <form id="contact-form">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required />
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required />
-
-                    <label for="message">Message:</label>
-                    <textarea id="message" required></textarea>
-
-                    <button type="submit">Send</button>
-                </form>
-            </section>
-
-        </main>
-
-        <footer>
-            <p>&copy; 2023 Ali Hussain</p>
-        </footer>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Real-time CDC Streaming Service</h2>
-                <p>Here you can provide an in-depth explanation of the project, challenges faced, technologies used, and the impact it had on the organization.</p>
-            </div>
+  <main class="max-w-6xl mx-auto px-6">
+    <!-- Hero -->
+    <section id="hero" class="pt-14 pb-10">
+      <div class="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] items-start">
+        <div class="space-y-5">
+          <p class="mono text-sm text-indigo-300/80">Senior Software Engineer</p>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50">Ali Hussain</h1>
+          <p class="text-slate-300 leading-relaxed max-w-2xl">
+            Designing distributed backend systems for cloud-native security platforms, with a focus on Go, Kubernetes, and high-scale data pipelines.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#contact" class="focus-ring inline-flex items-center gap-2 rounded-full bg-indigo-500/90 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400 transition">
+              Contact
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+            <a href="#experience" class="focus-ring inline-flex items-center gap-2 rounded-full border border-indigo-300/30 px-4 py-2 text-sm font-medium text-indigo-200 hover:text-white hover:border-indigo-300/60 transition">
+              View Experience
+            </a>
+          </div>
+          <div class="flex items-center gap-4 text-slate-300">
+            <a class="focus-ring hover:text-white transition" href="https://github.com/alisaleemh" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a class="focus-ring hover:text-white transition" href="https://linkedin.com/in/alisaleemh/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a class="focus-ring hover:text-white transition" href="mailto:ali.s1995@gmail.com" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
         </div>
+        <div class="space-y-4">
+          <div class="experience-card rounded-2xl p-5 shadow-soft">
+            <p class="mono text-xs uppercase tracking-[0.2em] text-slate-400">Focus</p>
+            <ul class="mt-3 space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Distributed systems, streaming, and CDC pipelines</li>
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Cloud-native platforms on GCP, AWS, and Kubernetes</li>
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Operational excellence, observability, and resilient tooling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- About -->
+    <section id="about" class="section-divider py-10">
+      <div class="space-y-4 max-w-3xl">
+        <h2 class="text-xl font-semibold text-slate-50">About</h2>
+        <p class="text-slate-300 leading-relaxed">
+          Senior engineer specializing in backend systems, security data products, and cloud orchestration. Strong track record in leading complex projects from discovery to production.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Looking for: senior or staff software engineering roles leading complex initiatives and mentoring teams.
+        </p>
+      </div>
+    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For skills chart (if needed) -->
-    <script src="script.js"></script>
+    <!-- Skills -->
+    <section id="skills" class="section-divider py-10">
+      <div class="space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-semibold text-slate-50">Skills</h2>
+            <p class="text-sm text-slate-400">Focused, high-signal tooling and platforms.</p>
+          </div>
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Skill categories">
+            <button class="filter-btn focus-ring rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 hover:text-white transition" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn focus-ring rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 hover:text-white transition" data-filter="languages" aria-pressed="false">Languages</button>
+            <button class="filter-btn focus-ring rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 hover:text-white transition" data-filter="frameworks" aria-pressed="false">Frameworks</button>
+            <button class="filter-btn focus-ring rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 hover:text-white transition" data-filter="tools" aria-pressed="false">Tools</button>
+            <button class="filter-btn focus-ring rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-300 hover:text-white transition" data-filter="databases" aria-pressed="false">Databases</button>
+          </div>
+        </div>
+        <div id="skill-grid" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Languages -->
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/go/94a3b8" alt="Go" />
+            <span class="text-sm">Go</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/java/94a3b8" alt="Java" />
+            <span class="text-sm">Java</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/javascript/94a3b8" alt="JavaScript" />
+            <span class="text-sm">JavaScript</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/python/94a3b8" alt="Python" />
+            <span class="text-sm">Python</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="NodeJS" />
+            <span class="text-sm">NodeJS</span>
+          </div>
 
+          <!-- Frameworks -->
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/spring/94a3b8" alt="Spring" />
+            <span class="text-sm">Spring</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/angular/94a3b8" alt="Angular" />
+            <span class="text-sm">Angular</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/flask/94a3b8" alt="Flask" />
+            <span class="text-sm">Flask</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="NodeJS" />
+            <span class="text-sm">NodeJS</span>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/kubernetes/94a3b8" alt="Kubernetes" />
+            <span class="text-sm">Kubernetes</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/docker/94a3b8" alt="Docker" />
+            <span class="text-sm">Docker</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/jenkins/94a3b8" alt="Jenkins" />
+            <span class="text-sm">Jenkins</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/grafana/94a3b8" alt="Grafana" />
+            <span class="text-sm">Grafana</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/prometheus/94a3b8" alt="Prometheus" />
+            <span class="text-sm">Prometheus</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/newrelic/94a3b8" alt="New Relic" />
+            <span class="text-sm">New Relic</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/terraform/94a3b8" alt="Terraform" />
+            <span class="text-sm">Terraform</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/crossplane/94a3b8" alt="Crossplane" />
+            <span class="text-sm">Crossplane</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/elasticsearch/94a3b8" alt="Elasticsearch" />
+            <span class="text-sm">Elasticsearch</span>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/postgresql/94a3b8" alt="PostgreSQL" />
+            <span class="text-sm">PostgreSQL</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/mysql/94a3b8" alt="MySQL" />
+            <span class="text-sm">MySQL</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/googlecloudspanner/94a3b8" alt="GCP Spanner" />
+            <span class="text-sm">GCP Spanner</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/snowflake/94a3b8" alt="Snowflake" />
+            <span class="text-sm">Snowflake</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/amazondynamodb/94a3b8" alt="DynamoDB" />
+            <span class="text-sm">DynamoDB</span>
+          </div>
+          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
+            <img class="skill-logo" src="https://cdn.simpleicons.org/mongodb/94a3b8" alt="MongoDB" />
+            <span class="text-sm">MongoDB</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section-divider py-10">
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-xl font-semibold text-slate-50">Experience</h2>
+          <p class="text-sm text-slate-400">Condensed timeline with expandable details.</p>
+        </div>
+        <div class="space-y-4">
+          <!-- Censys -->
+          <article class="experience-card rounded-2xl p-5 shadow-soft">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-100">Senior Software Engineer, Collections</h3>
+                  <p class="text-sm text-slate-400">Censys · Toronto ON</p>
+                </div>
+                <p class="text-sm text-slate-400">Nov 2022 – Present</p>
+              </div>
+              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
+                <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
+                <li>Led development of a real-time CDC streaming service in Go and GCP PubSub, enabling instant attack surface change detection and replacing nightly batches.</li>
+              </ul>
+              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+                  <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
+                  <li>Led development of a real-time CDC streaming service in Go and GCP PubSub, enabling instant attack surface change detection and replacing nightly batches.</li>
+                  <li>Conducted technical and behavioral interviews and mentored new hires.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">GCP PubSub</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Streaming</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Nylas -->
+          <article class="experience-card rounded-2xl p-5 shadow-soft">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-100">Software Engineer, Platform</h3>
+                  <p class="text-sm text-slate-400">Nylas · Toronto ON</p>
+                </div>
+                <p class="text-sm text-slate-400">Oct 2021 – Sep 2022</p>
+              </div>
+              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
+                <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
+                <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
+              </ul>
+              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+                  <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
+                  <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
+                  <li>Designed a Go marketplace handler that enabled a new product launch and seamless sales integrations across verticals.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Prometheus</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Grafana</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- IBM Cloud -->
+          <article class="experience-card rounded-2xl p-5 shadow-soft">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-100">Software Engineer II, IBM Cloud</h3>
+                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+                </div>
+                <p class="text-sm text-slate-400">Apr 2020 – Oct 2021</p>
+              </div>
+              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
+                <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
+                <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
+              </ul>
+              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+                  <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
+                  <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
+                  <li>Provided security guidance to the team, ensuring best practices in architecture and software design.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">NodeJS</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">ChatOps</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- IBM DevOps -->
+          <article class="experience-card rounded-2xl p-5 shadow-soft">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-100">Software Engineer II, DevOps for Enterprise</h3>
+                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+                </div>
+                <p class="text-sm text-slate-400">May 2018 – Apr 2020</p>
+              </div>
+              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
+                <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
+                <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
+              </ul>
+              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+                  <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
+                  <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
+                  <li>Defined and executed performance testing, leading to an overall 20% performance enhancement.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Java</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Spring</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Performance</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- IBM Intern -->
+          <article class="experience-card rounded-2xl p-5 shadow-soft">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <h3 class="text-base font-semibold text-slate-100">Software Engineer (Intern), Db2 Performance</h3>
+                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+                </div>
+                <p class="text-sm text-slate-400">May 2016 – Apr 2018</p>
+              </div>
+              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
+                <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
+              </ul>
+              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+                  <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Angular</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Dashboards</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section-divider py-10">
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-xl font-semibold text-slate-50">Education</h2>
+          <p class="text-sm text-slate-400">Academic background.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="experience-card rounded-2xl p-5 shadow-soft flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-semibold text-slate-100">The University of Texas at Austin</h3>
+                <p class="text-xs text-slate-400">Master of Science (MSc), Computer Science · Specialization: Artificial Intelligence</p>
+              </div>
+              <img src="https://upload.wikimedia.org/wikipedia/en/4/4a/University_of_Texas_at_Austin_logo.svg" alt="University of Texas at Austin logo" class="h-8 w-auto opacity-60 grayscale" />
+            </div>
+          </article>
+          <article class="experience-card rounded-2xl p-5 shadow-soft flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-semibold text-slate-100">Toronto Metropolitan University</h3>
+                <p class="text-xs text-slate-400">Bachelor of Engineering, Mechatronics (BEng)</p>
+                <p class="text-xs text-slate-400">Toronto ON (2013–2018) · Dean’s List 2014, 2015, 2016</p>
+              </div>
+              <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Toronto_Metropolitan_University_logo.svg" alt="Toronto Metropolitan University logo" class="h-8 w-auto opacity-60 grayscale" />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-divider py-10">
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-xl font-semibold text-slate-50">Contact</h2>
+          <p class="text-sm text-slate-400">Open to senior/staff roles and complex systems challenges.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="experience-card rounded-2xl p-5 shadow-soft space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="space-y-1">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</p>
+                <p class="text-sm text-slate-200">ali.s1995@gmail.com</p>
+              </div>
+              <button id="copy-email" class="focus-ring inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-slate-200 hover:border-indigo-300/60 hover:text-white transition" aria-label="Copy email to clipboard">
+                <i class="fa-solid fa-copy"></i>
+                Copy
+              </button>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 647 987 7996</span>
+            </div>
+          </div>
+          <div class="experience-card rounded-2xl p-5 shadow-soft space-y-4">
+            <a class="focus-ring flex items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-200 hover:border-indigo-300/60 hover:text-white transition" href="https://github.com/alisaleemh" target="_blank" rel="noreferrer">
+              <span class="flex items-center gap-2"><i class="fa-brands fa-github"></i> github.com/alisaleemh</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+            <a class="focus-ring flex items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-sm text-slate-200 hover:border-indigo-300/60 hover:text-white transition" href="https://linkedin.com/in/alisaleemh/" target="_blank" rel="noreferrer">
+              <span class="flex items-center gap-2"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/alisaleemh/</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section-divider py-6 text-center text-xs text-slate-500">
+    Crafted with restraint, clarity, and focus.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-2b0A3+MYa7+ctb0M/mQ9KQ0OO4thwXbGwrx4Z0XlIhzI8M7hY4qG/9aC3wX1o2Y6v8x/wU5Yb2Imv0v2g6T9gA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-fOnvNmiY6L1T27ex9Pv9bfT2h9+V7m1NfUV0IKJwHC8oQ6+V1TeR3fYI4a9L0dVSqpoK6eXqW2jH6KSk0HyrKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = ['about', 'skills', 'experience', 'education', 'contact'].map((id) => document.getElementById(id));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0.1 }
+    );
+
+    sections.forEach((section) => section && observer.observe(section));
+
+    // Accordion
+    document.querySelectorAll('.accordion-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const content = toggle.parentElement.querySelector('.accordion-content');
+        const collapsed = toggle.parentElement.querySelector('.collapsed-bullets');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+        toggle.firstChild.textContent = isExpanded ? 'Show more' : 'Show less';
+        content.classList.toggle('hidden');
+        collapsed.classList.toggle('hidden');
+        if (!prefersReducedMotion) {
+          gsap.fromTo(content, { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power1.out' });
+        }
+      });
+    });
+
+    // Skill filters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((button) => button.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        const filter = btn.dataset.filter;
+
+        skillItems.forEach((item) => {
+          const match = filter === 'all' || item.dataset.category === filter;
+          if (match) {
+            item.classList.remove('hidden');
+          }
+        });
+
+        if (!prefersReducedMotion) {
+          gsap.to(skillItems, {
+            opacity: (i, el) => (filter === 'all' || el.dataset.category === filter ? 1 : 0),
+            y: (i, el) => (filter === 'all' || el.dataset.category === filter ? 0 : 6),
+            duration: 0.3,
+            ease: 'power1.out',
+            onComplete: () => {
+              skillItems.forEach((item) => {
+                const match = filter === 'all' || item.dataset.category === filter;
+                if (!match) item.classList.add('hidden');
+              });
+            },
+          });
+        } else {
+          skillItems.forEach((item) => {
+            const match = filter === 'all' || item.dataset.category === filter;
+            item.classList.toggle('hidden', !match);
+          });
+        }
+      });
+    });
+
+    // Copy email
+    document.getElementById('copy-email').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('ali.s1995@gmail.com');
+      } catch (error) {
+        window.location.href = 'mailto:ali.s1995@gmail.com';
+      }
+    });
+
+    // Scroll reveals
+    if (!prefersReducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('section').forEach((section) => {
+        gsap.from(section.querySelectorAll('.experience-card, h2, h3, p, ul, .chip, .skill-item'), {
+          opacity: 0,
+          y: 14,
+          duration: 0.6,
+          ease: 'power2.out',
+          stagger: 0.04,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+          },
+        });
+      });
+    }
+  </script>
 </body>
 </html>
