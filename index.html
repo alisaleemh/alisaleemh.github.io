@@ -468,7 +468,7 @@
                 <h3 class="text-sm font-semibold text-slate-100">The University of Texas at Austin</h3>
                 <p class="text-xs text-slate-400">Master of Science (MSc), Computer Science · Specialization: Artificial Intelligence</p>
               </div>
-              <img src="assets/utexas-logo.svg" alt="University of Texas at Austin logo" class="h-8 w-auto opacity-60 grayscale" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/University_of_Texas_at_Austin_logo.svg" alt="University of Texas at Austin logo" class="h-8 w-auto opacity-60 grayscale" />
             </div>
           </article>
           <article class="experience-card rounded-2xl p-5 shadow-soft flex flex-col gap-4">
@@ -478,7 +478,7 @@
                 <p class="text-xs text-slate-400">Bachelor of Engineering, Mechatronics (BEng)</p>
                 <p class="text-xs text-slate-400">Toronto ON (2013–2018) · Dean’s List 2014, 2015, 2016</p>
               </div>
-              <img src="assets/tmu-logo.svg" alt="Toronto Metropolitan University logo" class="h-8 w-auto opacity-60 grayscale" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Toronto_Metropolitan_University_logo.svg" alt="Toronto Metropolitan University logo" class="h-8 w-auto opacity-60 grayscale" />
             </div>
           </article>
         </div>
@@ -568,19 +568,24 @@
     const skillItems = document.querySelectorAll('.skill-item');
 
     const applySkillFilter = (filter) => {
+      const matches = [];
       skillItems.forEach((item) => {
         const match = filter === 'all' || item.dataset.category === filter;
         item.classList.toggle('hidden', !match);
-        item.style.opacity = match ? '1' : '0';
-        item.style.transform = match ? 'translateY(0px)' : 'translateY(6px)';
-        if (!prefersReducedMotion && match) {
-          gsap.fromTo(
-            item,
-            { opacity: 0, y: 6 },
-            { opacity: 1, y: 0, duration: 0.25, ease: 'power1.out', overwrite: 'auto' }
-          );
+        if (match) {
+          item.style.removeProperty('opacity');
+          item.style.removeProperty('transform');
+          matches.push(item);
         }
       });
+
+      if (!prefersReducedMotion && matches.length > 0) {
+        gsap.fromTo(
+          matches,
+          { opacity: 0, y: 6 },
+          { opacity: 1, y: 0, duration: 0.25, ease: 'power1.out', stagger: 0.04, overwrite: 'auto' }
+        );
+      }
     };
 
     filterButtons.forEach((btn) => {
