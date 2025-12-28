@@ -599,17 +599,22 @@
     const skillItems = document.querySelectorAll('.skill-item');
 
     const applySkillFilter = (filter) => {
-      gsap.killTweensOf(skillItems);
+      const canAnimate = typeof gsap !== 'undefined' && !prefersReducedMotion;
+      if (canAnimate) {
+        gsap.killTweensOf(skillItems);
+      }
+
       skillItems.forEach((item) => {
         const match = filter === 'all' || item.dataset.category === filter;
+        item.hidden = !match;
         item.classList.toggle('hidden', !match);
-        item.style.display = match ? '' : 'none';
+        item.style.removeProperty('display');
         item.style.removeProperty('opacity');
         item.style.removeProperty('transform');
       });
 
-      if (!prefersReducedMotion) {
-        const visibleItems = Array.from(skillItems).filter((item) => item.style.display !== 'none');
+      if (canAnimate) {
+        const visibleItems = Array.from(skillItems).filter((item) => !item.hidden);
         if (visibleItems.length > 0) {
           gsap.fromTo(
             visibleItems,
