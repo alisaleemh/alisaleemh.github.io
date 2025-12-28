@@ -86,23 +86,16 @@
     .timeline {
       position: relative;
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0.5rem;
-      bottom: 0.5rem;
-      left: 0.5rem;
-      width: 1px;
-      background: rgba(148, 163, 184, 0.18);
-    }
     .timeline-item {
       position: relative;
-      padding-left: 2.75rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: minmax(220px, 40%) minmax(0, 60%);
     }
     .timeline-node {
       position: absolute;
-      left: 0.25rem;
-      top: 1.2rem;
+      left: 0.5rem;
+      top: 1.15rem;
       width: 0.75rem;
       height: 0.75rem;
       border-radius: 999px;
@@ -110,8 +103,19 @@
       box-shadow: 0 0 0 4px rgba(15, 17, 25, 1);
     }
     .timeline-anchor {
+      position: relative;
+      padding-left: 2.75rem;
       display: grid;
       gap: 0.35rem;
+    }
+    .timeline-anchor::before {
+      content: '';
+      position: absolute;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      left: 0.85rem;
+      width: 1px;
+      background: rgba(148, 163, 184, 0.18);
     }
     .timeline-company {
       font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
@@ -131,20 +135,25 @@
       color: #cbd5f5;
     }
     .timeline-bullets {
-      margin-top: 0.75rem;
       font-size: 0.95rem;
       color: #cbd5f5;
       line-height: 1.6;
     }
+    .timeline-details {
+      padding-top: 0.1rem;
+    }
     @media (max-width: 640px) {
-      .timeline::before {
-        left: 0.3rem;
-      }
       .timeline-item {
-        padding-left: 2.25rem;
+        grid-template-columns: 1fr;
       }
       .timeline-node {
-        left: 0.05rem;
+        left: 0.5rem;
+      }
+      .timeline-anchor {
+        padding-left: 2.25rem;
+      }
+      .timeline-anchor::before {
+        left: 0.6rem;
       }
       .timeline-meta {
         font-size: 0.9rem;
@@ -363,23 +372,25 @@
                 <span>Toronto ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Built the scheduling and job submission system for AI training and inference workloads on supercomputer clusters.</li>
                 <li>Maintained and extended Kubernetes-style control planes, building custom controllers and reconcilers for resource allocation, retries, and job lifecycles.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Built the scheduling and job submission system for AI training and inference workloads on supercomputer clusters.</li>
-                <li>Maintained and extended Kubernetes-style control planes, building custom controllers and reconcilers for resource allocation, retries, and job lifecycles.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Controllers</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Scheduling</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Built the scheduling and job submission system for AI training and inference workloads on supercomputer clusters.</li>
+                  <li>Maintained and extended Kubernetes-style control planes, building custom controllers and reconcilers for resource allocation, retries, and job lifecycles.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Controllers</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Scheduling</span>
+                </div>
               </div>
             </div>
           </article>
@@ -395,24 +406,26 @@
                 <span>Toronto ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
                 <li>Delivered a real-time CDC streaming service in Go and GCP PubSub, partnering with a staff engineer on architecture to enable instant attack surface change detection and replace nightly batches.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
-                <li>Delivered a real-time CDC streaming service in Go and GCP PubSub, partnering with a staff engineer on architecture to enable instant attack surface change detection and replace nightly batches.</li>
-                <li>Conducted technical and behavioral interviews and mentored new hires.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">GCP PubSub</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Streaming</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
+                  <li>Delivered a real-time CDC streaming service in Go and GCP PubSub, partnering with a staff engineer on architecture to enable instant attack surface change detection and replace nightly batches.</li>
+                  <li>Conducted technical and behavioral interviews and mentored new hires.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">GCP PubSub</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Streaming</span>
+                </div>
               </div>
             </div>
           </article>
@@ -428,25 +441,27 @@
                 <span>Toronto ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
                 <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
-                <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
-                <li>Designed a Go marketplace handler that enabled a new product launch and seamless sales integrations across verticals.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Prometheus</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Grafana</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
+                  <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
+                  <li>Designed a Go marketplace handler that enabled a new product launch and seamless sales integrations across verticals.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Prometheus</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Grafana</span>
+                </div>
               </div>
             </div>
           </article>
@@ -462,24 +477,26 @@
                 <span>Markham ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
                 <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
-                <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
-                <li>Provided security guidance to the team, ensuring best practices in architecture and software design.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">NodeJS</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">ChatOps</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
+                  <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
+                  <li>Provided security guidance to the team, ensuring best practices in architecture and software design.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">NodeJS</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">ChatOps</span>
+                </div>
               </div>
             </div>
           </article>
@@ -495,24 +512,26 @@
                 <span>Markham ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
                 <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
-                <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
-                <li>Defined and executed performance testing, leading to an overall 20% performance enhancement.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Java</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Spring</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Performance</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
+                  <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
+                  <li>Defined and executed performance testing, leading to an overall 20% performance enhancement.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Java</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Spring</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Performance</span>
+                </div>
               </div>
             </div>
           </article>
@@ -528,21 +547,23 @@
                 <span>Markham ON</span>
               </div>
             </div>
-            <ul class="collapsed-bullets timeline-bullets space-y-2">
+            <div class="timeline-details">
+              <ul class="collapsed-bullets timeline-bullets space-y-2">
                 <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
               </ul>
-            <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-              Show more
-              <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-            </button>
-            <div class="accordion-content hidden pt-3">
-              <ul class="expanded-bullets timeline-bullets space-y-2">
-                <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Angular</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Dashboards</span>
+              <button class="accordion-toggle focus-ring mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
+                Show more
+                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+              </button>
+              <div class="accordion-content hidden pt-3">
+                <ul class="expanded-bullets timeline-bullets space-y-2">
+                  <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Angular</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
+                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Dashboards</span>
+                </div>
               </div>
             </div>
           </article>
