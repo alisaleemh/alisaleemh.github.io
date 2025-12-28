@@ -603,12 +603,13 @@
       skillItems.forEach((item) => {
         const match = filter === 'all' || item.dataset.category === filter;
         item.classList.toggle('hidden', !match);
+        item.style.display = match ? '' : 'none';
         item.style.removeProperty('opacity');
         item.style.removeProperty('transform');
       });
 
       if (!prefersReducedMotion) {
-        const visibleItems = Array.from(skillItems).filter((item) => !item.classList.contains('hidden'));
+        const visibleItems = Array.from(skillItems).filter((item) => item.style.display !== 'none');
         if (visibleItems.length > 0) {
           gsap.fromTo(
             visibleItems,
