@@ -83,6 +83,75 @@
       border: 1px solid rgba(148, 163, 184, 0.18);
       background: rgba(17, 18, 26, 0.7);
     }
+    .timeline {
+      position: relative;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 2.75rem;
+    }
+    .timeline-node {
+      position: absolute;
+      left: 0.6rem;
+      top: 1.6rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 999px;
+      background: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 0 0 4px rgba(15, 17, 25, 1);
+    }
+    .timeline-card {
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 1rem;
+      background: rgba(15, 17, 25, 0.6);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(129, 140, 248, 0.3);
+      box-shadow: 0 12px 24px -18px rgba(0, 0, 0, 0.65);
+    }
+    .timeline-card.is-expanded {
+      border-color: rgba(129, 140, 248, 0.35);
+      box-shadow: 0 0 18px rgba(129, 140, 248, 0.15);
+    }
+    .timeline-company {
+      font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.9rem);
+      font-weight: 600;
+      color: #f8fafc;
+      letter-spacing: 0.01em;
+    }
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .timeline-bullets {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+      line-height: 1.6;
+    }
+    .timeline-details {
+      padding-top: 0.1rem;
+    }
+    @media (max-width: 640px) {
+      .timeline-item {
+        padding-left: 2.25rem;
+      }
+      .timeline-node {
+        left: 0.35rem;
+      }
+      .timeline-meta {
+        font-size: 0.9rem;
+      }
+    }
     .accordion-toggle[aria-expanded="true"] .toggle-icon {
       transform: rotate(180deg);
     }
@@ -127,7 +196,7 @@
           <p class="mono text-sm text-indigo-300/80">Senior Software Engineer</p>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-50">Ali Hussain</h1>
           <p class="text-slate-300 leading-relaxed max-w-2xl">
-            Designing distributed backend systems for cloud-native security platforms, with a focus on Go, Kubernetes, and high-scale data pipelines.
+            Building AI-focused backend systems and control planes for large-scale training and inference, with deep experience in Go, Kubernetes, and distributed data platforms.
           </p>
           <div class="flex flex-wrap gap-3">
             <a href="#contact" class="focus-ring inline-flex items-center gap-2 rounded-full bg-indigo-500/90 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400 transition">
@@ -145,7 +214,7 @@
             <a class="focus-ring hover:text-white transition" href="https://linkedin.com/in/alisaleemh/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a class="focus-ring hover:text-white transition" href="mailto:ali.s1995@gmail.com" aria-label="Email">
+            <a class="focus-ring hover:text-white transition" href="mailto:ahussain.ca5@gmail.com" aria-label="Email">
               <i class="fa-solid fa-envelope"></i>
             </a>
           </div>
@@ -154,9 +223,9 @@
           <div class="experience-card rounded-2xl p-5 shadow-soft">
             <p class="mono text-xs uppercase tracking-[0.2em] text-slate-400">Focus</p>
             <ul class="mt-3 space-y-3 text-sm text-slate-300">
-              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Distributed systems, streaming, and CDC pipelines</li>
-              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Cloud-native platforms on GCP, AWS, and Kubernetes</li>
-              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Operational excellence, observability, and resilient tooling</li>
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>AI training & inference platforms with cluster orchestration and control planes</li>
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Kubernetes engineering (controllers, reconcilers, and advanced platform workflows)</li>
+              <li class="flex items-start gap-3"><span class="text-indigo-300">▹</span>Distributed systems, event-driven architectures, and high-scale data pipelines</li>
             </ul>
           </div>
         </div>
@@ -168,10 +237,7 @@
       <div class="space-y-4 max-w-3xl">
         <h2 class="text-xl font-semibold text-slate-50">About</h2>
         <p class="text-slate-300 leading-relaxed">
-          Senior engineer specializing in backend systems, security data products, and cloud orchestration. Strong track record in leading complex projects from discovery to production.
-        </p>
-        <p class="text-slate-300 leading-relaxed">
-          Looking for: senior or staff software engineering roles leading complex initiatives and mentoring teams.
+          Senior engineer focused on AI platform engineering, backend systems, and cloud orchestration. Experienced in building production control planes for AI training and inference alongside large-scale distributed data platforms.
         </p>
       </div>
     </section>
@@ -199,7 +265,7 @@
             <span class="text-sm">Go</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/java/94a3b8" alt="Java" />
+            <img class="skill-logo" src="https://cdn.simpleicons.org/openjdk/94a3b8" alt="Java" />
             <span class="text-sm">Java</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
@@ -210,10 +276,6 @@
             <img class="skill-logo" src="https://cdn.simpleicons.org/python/94a3b8" alt="Python" />
             <span class="text-sm">Python</span>
           </div>
-          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="languages">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="NodeJS" />
-            <span class="text-sm">NodeJS</span>
-          </div>
 
           <!-- Frameworks -->
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
@@ -223,14 +285,6 @@
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
             <img class="skill-logo" src="https://cdn.simpleicons.org/angular/94a3b8" alt="Angular" />
             <span class="text-sm">Angular</span>
-          </div>
-          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/flask/94a3b8" alt="Flask" />
-            <span class="text-sm">Flask</span>
-          </div>
-          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="frameworks">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/nodedotjs/94a3b8" alt="NodeJS" />
-            <span class="text-sm">NodeJS</span>
           </div>
 
           <!-- Tools -->
@@ -243,10 +297,6 @@
             <span class="text-sm">Docker</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/jenkins/94a3b8" alt="Jenkins" />
-            <span class="text-sm">Jenkins</span>
-          </div>
-          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
             <img class="skill-logo" src="https://cdn.simpleicons.org/grafana/94a3b8" alt="Grafana" />
             <span class="text-sm">Grafana</span>
           </div>
@@ -255,15 +305,11 @@
             <span class="text-sm">Prometheus</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/newrelic/94a3b8" alt="New Relic" />
-            <span class="text-sm">New Relic</span>
-          </div>
-          <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
             <img class="skill-logo" src="https://cdn.simpleicons.org/terraform/94a3b8" alt="Terraform" />
             <span class="text-sm">Terraform</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/crossplane/94a3b8" alt="Crossplane" />
+            <img class="skill-logo" src="https://raw.githubusercontent.com/cncf/artwork/main/projects/crossplane/icon/color/crossplane-icon-color.svg" alt="Crossplane" />
             <span class="text-sm">Crossplane</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="tools">
@@ -289,7 +335,7 @@
             <span class="text-sm">Snowflake</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
-            <img class="skill-logo" src="https://cdn.simpleicons.org/amazondynamodb/94a3b8" alt="DynamoDB" />
+            <img class="skill-logo" src="https://api.iconify.design/simple-icons:amazondynamodb.svg?color=%2394a3b8" alt="DynamoDB" />
             <span class="text-sm">DynamoDB</span>
           </div>
           <div class="skill-item chip flex items-center gap-3 rounded-xl px-4 py-3 transition" data-category="databases">
@@ -307,165 +353,233 @@
           <h2 class="text-xl font-semibold text-slate-50">Experience</h2>
           <p class="text-sm text-slate-400">Condensed timeline with expandable details.</p>
         </div>
-        <div class="space-y-4">
-          <!-- Censys -->
-          <article class="experience-card rounded-2xl p-5 shadow-soft">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-100">Senior Software Engineer, Collections</h3>
-                  <p class="text-sm text-slate-400">Censys · Toronto ON</p>
+        <div class="timeline space-y-8">
+          <!-- Cerebras Systems -->
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">Cerebras Systems</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Senior Software Engineer</p>
+                  <div class="timeline-meta">
+                    <span>Feb 2025 – Present</span>
+                    <span>Toronto ON</span>
+                  </div>
                 </div>
-                <p class="text-sm text-slate-400">Nov 2022 – Present</p>
               </div>
-              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
-                <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
-                <li>Led development of a real-time CDC streaming service in Go and GCP PubSub, enabling instant attack surface change detection and replacing nightly batches.</li>
-              </ul>
-              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-                Show more
-                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-              </button>
-              <div class="accordion-content hidden pt-3">
-                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
-                  <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
-                  <li>Led development of a real-time CDC streaming service in Go and GCP PubSub, enabling instant attack surface change detection and replacing nightly batches.</li>
-                  <li>Conducted technical and behavioral interviews and mentored new hires.</li>
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
+                  <li>Built the scheduling and job submission system for AI training and inference workloads on supercomputer clusters.</li>
+                  <li>Maintained and extended Kubernetes-style control planes, building custom controllers and reconcilers for resource allocation, retries, and job lifecycles.</li>
                 </ul>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">GCP PubSub</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Streaming</span>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Built the scheduling and job submission system for AI training and inference workloads on supercomputer clusters.</li>
+                    <li>Maintained and extended Kubernetes-style control planes, building custom controllers and reconcilers for resource allocation, retries, and job lifecycles.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Kubernetes</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Controllers</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Scheduling</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Censys -->
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">Censys</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Senior Software Engineer, Collections</p>
+                  <div class="timeline-meta">
+                    <span>Nov 2022 – Feb 2025</span>
+                    <span>Toronto ON</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
+                  <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
+                  <li>Delivered a real-time CDC streaming service in Go and GCP PubSub, partnering with a staff engineer on architecture to enable instant attack surface change detection and replace nightly batches.</li>
+                </ul>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Led the Automated Asset Discovery project, automating seed identification for attack surfaces, used by sales demos and mitigating deal risk for a major customer.</li>
+                    <li>Delivered a real-time CDC streaming service in Go and GCP PubSub, partnering with a staff engineer on architecture to enable instant attack surface change detection and replace nightly batches.</li>
+                    <li>Conducted technical and behavioral interviews and mentored new hires.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Go</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">GCP PubSub</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Streaming</span>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
           <!-- Nylas -->
-          <article class="experience-card rounded-2xl p-5 shadow-soft">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-100">Software Engineer, Platform</h3>
-                  <p class="text-sm text-slate-400">Nylas · Toronto ON</p>
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">Nylas</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Software Engineer, Platform</p>
+                  <div class="timeline-meta">
+                    <span>Oct 2021 – Sep 2022</span>
+                    <span>Toronto ON</span>
+                  </div>
                 </div>
-                <p class="text-sm text-slate-400">Oct 2021 – Sep 2022</p>
               </div>
-              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
-                <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
-                <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
-              </ul>
-              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-                Show more
-                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-              </button>
-              <div class="accordion-content hidden pt-3">
-                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
                   <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
                   <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
-                  <li>Designed a Go marketplace handler that enabled a new product launch and seamless sales integrations across verticals.</li>
                 </ul>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Kubernetes</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Prometheus</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Grafana</span>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Built a Go-based Kubernetes orchestrator to provision microservices on AWS and GCP clusters with Prometheus and Grafana observability.</li>
+                    <li>Developed error propagation flows in the orchestrator, reducing support tickets by 50%.</li>
+                    <li>Designed a Go marketplace handler that enabled a new product launch and seamless sales integrations across verticals.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Go</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Kubernetes</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Prometheus</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Grafana</span>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
           <!-- IBM Cloud -->
-          <article class="experience-card rounded-2xl p-5 shadow-soft">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-100">Software Engineer II, IBM Cloud</h3>
-                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">IBM Canada</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Software Engineer II, IBM Cloud</p>
+                  <div class="timeline-meta">
+                    <span>Apr 2020 – Oct 2021</span>
+                    <span>Markham ON</span>
+                  </div>
                 </div>
-                <p class="text-sm text-slate-400">Apr 2020 – Oct 2021</p>
               </div>
-              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
-                <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
-                <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
-              </ul>
-              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-                Show more
-                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-              </button>
-              <div class="accordion-content hidden pt-3">
-                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
                   <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
                   <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
-                  <li>Provided security guidance to the team, ensuring best practices in architecture and software design.</li>
                 </ul>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">NodeJS</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">ChatOps</span>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Led design and development of a NodeJS ChatOps bot platform used by IBM Cloud service teams to automate workflows.</li>
+                    <li>Implemented a Go service layer for breakglass scenarios, increasing resilience and uptime.</li>
+                    <li>Provided security guidance to the team, ensuring best practices in architecture and software design.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">NodeJS</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Go</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">ChatOps</span>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
           <!-- IBM DevOps -->
-          <article class="experience-card rounded-2xl p-5 shadow-soft">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-100">Software Engineer II, DevOps for Enterprise</h3>
-                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">IBM Canada</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Software Engineer II, DevOps for Enterprise</p>
+                  <div class="timeline-meta">
+                    <span>May 2018 – Apr 2020</span>
+                    <span>Markham ON</span>
+                  </div>
                 </div>
-                <p class="text-sm text-slate-400">May 2018 – Apr 2020</p>
               </div>
-              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
-                <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
-                <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
-              </ul>
-              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-                Show more
-                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-              </button>
-              <div class="accordion-content hidden pt-3">
-                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
                   <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
                   <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
-                  <li>Defined and executed performance testing, leading to an overall 20% performance enhancement.</li>
                 </ul>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Java</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Spring</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Performance</span>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Led migration to Java Spring microservices, modernizing legacy systems and reducing latency by 80%.</li>
+                    <li>Implemented a caching layer in Java Spring backend, improving performance by 50%.</li>
+                    <li>Defined and executed performance testing, leading to an overall 20% performance enhancement.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Java</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Spring</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Performance</span>
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
           <!-- IBM Intern -->
-          <article class="experience-card rounded-2xl p-5 shadow-soft">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-100">Software Engineer (Intern), Db2 Performance</h3>
-                  <p class="text-sm text-slate-400">IBM Canada · Markham ON</p>
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card p-6">
+              <div class="space-y-2">
+                <h3 class="timeline-company">IBM Canada</h3>
+                <div class="space-y-1">
+                  <p class="timeline-role">Software Engineer, Db2 Performance</p>
+                  <div class="timeline-meta">
+                    <span>May 2016 – Apr 2018</span>
+                    <span>Markham ON</span>
+                  </div>
                 </div>
-                <p class="text-sm text-slate-400">May 2016 – Apr 2018</p>
               </div>
-              <ul class="collapsed-bullets text-sm text-slate-300 space-y-2">
-                <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
-              </ul>
-              <button class="accordion-toggle focus-ring mt-2 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-indigo-300" aria-expanded="false">
-                Show more
-                <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
-              </button>
-              <div class="accordion-content hidden pt-3">
-                <ul class="expanded-bullets text-sm text-slate-300 space-y-2">
+              <div class="timeline-details mt-4">
+                <ul class="collapsed-bullets timeline-bullets space-y-2">
                   <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
                 </ul>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Angular</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Go</span>
-                  <span class="chip rounded-full px-3 py-1 text-xs text-slate-300">Dashboards</span>
+                <button class="accordion-toggle focus-ring mt-4 flex w-full items-center justify-between rounded-lg border border-white/10 bg-ink-800/50 px-4 py-2 text-xs uppercase tracking-[0.2em] text-indigo-200 hover:border-indigo-400/40 hover:text-white transition" aria-expanded="false">
+                  Show more
+                  <i class="toggle-icon fa-solid fa-chevron-down text-xs transition"></i>
+                </button>
+                <div class="accordion-content hidden pt-3">
+                  <ul class="expanded-bullets timeline-bullets space-y-2">
+                    <li>Led the development of a new Angular 4 dashboard and Go backend resulting in 10X faster load times and a more maintainable and scalable codebase.</li>
+                  </ul>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Angular</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Go</span>
+                    <span class="chip rounded-full px-3 py-1 text-xs text-slate-200 bg-ink-800/80">Dashboards</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -487,8 +601,10 @@
               <div>
                 <h3 class="text-sm font-semibold text-slate-100">The University of Texas at Austin</h3>
                 <p class="text-xs text-slate-400">Master of Science (MSc), Computer Science · Specialization: Artificial Intelligence</p>
+                <p class="text-xs text-slate-400">2025 – 2027 (Expected)</p>
+                <p class="text-xs text-slate-400">Coursework: Deep Learning, Advanced Deep Learning, Ethics in AI</p>
               </div>
-              <img src="https://upload.wikimedia.org/wikipedia/en/4/4a/University_of_Texas_at_Austin_logo.svg" alt="University of Texas at Austin logo" class="h-8 w-auto opacity-60 grayscale" />
+              <img src="https://raw.githubusercontent.com/abrelsfo/sportsJSON/master/collegeFootball/logos/texas.png" alt="University of Texas at Austin logo" class="h-8 w-auto opacity-60 grayscale" />
             </div>
           </article>
           <article class="experience-card rounded-2xl p-5 shadow-soft flex flex-col gap-4">
@@ -498,7 +614,7 @@
                 <p class="text-xs text-slate-400">Bachelor of Engineering, Mechatronics (BEng)</p>
                 <p class="text-xs text-slate-400">Toronto ON (2013–2018) · Dean’s List 2014, 2015, 2016</p>
               </div>
-              <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Toronto_Metropolitan_University_logo.svg" alt="Toronto Metropolitan University logo" class="h-8 w-auto opacity-60 grayscale" />
+              <img src="https://raw.githubusercontent.com/zonekidsyoga/torontomucatwo/main/Login%20-%20Toronto%20Metropolitan%20University%20Central%20Authentication%20Service_files/tmu_logo.svg" alt="Toronto Metropolitan University logo" class="h-8 w-auto opacity-60 grayscale" />
             </div>
           </article>
         </div>
@@ -517,16 +633,12 @@
             <div class="flex items-center justify-between">
               <div class="space-y-1">
                 <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</p>
-                <p class="text-sm text-slate-200">ali.s1995@gmail.com</p>
+                <p class="text-sm text-slate-200">ahussain.ca5@gmail.com</p>
               </div>
               <button id="copy-email" class="focus-ring inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-xs text-slate-200 hover:border-indigo-300/60 hover:text-white transition" aria-label="Copy email to clipboard">
                 <i class="fa-solid fa-copy"></i>
                 Copy
               </button>
-            </div>
-            <div class="flex items-center gap-2 text-sm text-slate-300">
-              <i class="fa-solid fa-phone"></i>
-              <span>+1 647 987 7996</span>
             </div>
           </div>
           <div class="experience-card rounded-2xl p-5 shadow-soft space-y-4">
@@ -573,15 +685,17 @@
 
     // Accordion
     document.querySelectorAll('.accordion-toggle').forEach((toggle) => {
-      toggle.addEventListener('click', () => {
-        const content = toggle.parentElement.querySelector('.accordion-content');
-        const collapsed = toggle.parentElement.querySelector('.collapsed-bullets');
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isExpanded));
-        toggle.firstChild.textContent = isExpanded ? 'Show more' : 'Show less';
-        content.classList.toggle('hidden');
-        collapsed.classList.toggle('hidden');
-        if (!prefersReducedMotion) {
+        toggle.addEventListener('click', () => {
+          const content = toggle.parentElement.querySelector('.accordion-content');
+          const collapsed = toggle.parentElement.querySelector('.collapsed-bullets');
+          const card = toggle.closest('.timeline-card');
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          toggle.firstChild.textContent = isExpanded ? 'Show more' : 'Show less';
+          if (card) card.classList.toggle('is-expanded', !isExpanded);
+          content.classList.toggle('hidden');
+          collapsed.classList.toggle('hidden');
+          if (!prefersReducedMotion) {
           gsap.fromTo(content, { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power1.out' });
         }
       });
@@ -591,47 +705,49 @@
     const filterButtons = document.querySelectorAll('.filter-btn');
     const skillItems = document.querySelectorAll('.skill-item');
 
+    const applySkillFilter = (filter) => {
+      const canAnimate = typeof gsap !== 'undefined' && !prefersReducedMotion;
+      if (canAnimate) {
+        gsap.killTweensOf(skillItems);
+      }
+
+      skillItems.forEach((item) => {
+        const match = filter === 'all' || item.dataset.category === filter;
+        item.hidden = !match;
+        item.classList.toggle('hidden', !match);
+        item.style.removeProperty('display');
+        item.style.removeProperty('opacity');
+        item.style.removeProperty('transform');
+      });
+
+      if (canAnimate) {
+        const visibleItems = Array.from(skillItems).filter((item) => !item.hidden);
+        if (visibleItems.length > 0) {
+          gsap.fromTo(
+            visibleItems,
+            { opacity: 0, y: 6 },
+            { opacity: 1, y: 0, duration: 0.25, ease: 'power1.out', stagger: 0.04, overwrite: 'auto' }
+          );
+        }
+      }
+    };
+
     filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         filterButtons.forEach((button) => button.setAttribute('aria-pressed', 'false'));
         btn.setAttribute('aria-pressed', 'true');
-        const filter = btn.dataset.filter;
-
-        skillItems.forEach((item) => {
-          const match = filter === 'all' || item.dataset.category === filter;
-          if (match) {
-            item.classList.remove('hidden');
-          }
-        });
-
-        if (!prefersReducedMotion) {
-          gsap.to(skillItems, {
-            opacity: (i, el) => (filter === 'all' || el.dataset.category === filter ? 1 : 0),
-            y: (i, el) => (filter === 'all' || el.dataset.category === filter ? 0 : 6),
-            duration: 0.3,
-            ease: 'power1.out',
-            onComplete: () => {
-              skillItems.forEach((item) => {
-                const match = filter === 'all' || item.dataset.category === filter;
-                if (!match) item.classList.add('hidden');
-              });
-            },
-          });
-        } else {
-          skillItems.forEach((item) => {
-            const match = filter === 'all' || item.dataset.category === filter;
-            item.classList.toggle('hidden', !match);
-          });
-        }
+        applySkillFilter(btn.dataset.filter);
       });
     });
+
+    applySkillFilter('all');
 
     // Copy email
     document.getElementById('copy-email').addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText('ali.s1995@gmail.com');
+        await navigator.clipboard.writeText('ahussain.ca5@gmail.com');
       } catch (error) {
-        window.location.href = 'mailto:ali.s1995@gmail.com';
+        window.location.href = 'mailto:ahussain.ca5@gmail.com';
       }
     });
 
